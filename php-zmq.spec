@@ -4,7 +4,7 @@
 #
 Name     : php-zmq
 Version  : 97a073c956ad6c553e5b50c34d153276af475c58
-Release  : 1
+Release  : 2
 URL      : https://github.com/zeromq/php-zmq/archive/97a073c956ad6c553e5b50c34d153276af475c58.tar.gz
 Source0  : https://github.com/zeromq/php-zmq/archive/97a073c956ad6c553e5b50c34d153276af475c58.tar.gz
 Summary  : PHP 0MQ/zmq/zeromq extension
