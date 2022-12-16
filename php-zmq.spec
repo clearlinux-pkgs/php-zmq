@@ -4,13 +4,14 @@
 #
 Name     : php-zmq
 Version  : ee5fbc693f07b2d6f0d9fd748f131be82310f386
-Release  : 19
+Release  : 20
 URL      : https://github.com/zeromq/php-zmq/archive/ee5fbc693f07b2d6f0d9fd748f131be82310f386.tar.gz
 Source0  : https://github.com/zeromq/php-zmq/archive/ee5fbc693f07b2d6f0d9fd748f131be82310f386.tar.gz
 Summary  : PHP 0MQ/zmq/zeromq extension
 Group    : Development/Tools
 License  : BSD-3-Clause MPL-2.0
 Requires: php-zmq-lib = %{version}-%{release}
+Requires: php-zmq-license = %{version}-%{release}
 BuildRequires : buildreq-php
 BuildRequires : pkgconfig(libzmq)
 
@@ -20,9 +21,18 @@ PHP extension for the 0MQ/zmq/zeromq messaging system
 %package lib
 Summary: lib components for the php-zmq package.
 Group: Libraries
+Requires: php-zmq-license = %{version}-%{release}
 
 %description lib
 lib components for the php-zmq package.
+
+
+%package license
+Summary: license components for the php-zmq package.
+Group: Default
+
+%description license
+license components for the php-zmq package.
 
 
 %prep
@@ -38,6 +48,9 @@ phpize
 make  %{?_smp_mflags}
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/php-zmq
+cp %{_builddir}/php-zmq-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/php-zmq/a18192e166b602b55d41ff1f8a8091eeedcc9565
+cp %{_builddir}/php-zmq-%{version}/options/COPYING.MPL %{buildroot}/usr/share/package-licenses/php-zmq/5492593d138f1aae7754175d72091f0e26585e9e
 %make_install
 
 
@@ -46,4 +59,9 @@ make  %{?_smp_mflags}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/extensions/no-debug-non-zts-20210902/zmq.so
+/usr/lib64/extensions/no-debug-non-zts-20220829/zmq.so
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/php-zmq/5492593d138f1aae7754175d72091f0e26585e9e
+/usr/share/package-licenses/php-zmq/a18192e166b602b55d41ff1f8a8091eeedcc9565
